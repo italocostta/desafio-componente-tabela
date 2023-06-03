@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="usuarios" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let usuario"> {{usuario.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let usuario"> {{usuario.nome}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef> CPF </th>
+      <td mat-cell *matCellDef="let usuario"> {{usuario.cpf}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="ações">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let usuario" class="action-cell">
+        <div fxLayout="row" fxLayoutAlign="center">
+          <button mat-icon-button [routerLink]="['/editausuario', usuario.id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="apagar(usuario.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
